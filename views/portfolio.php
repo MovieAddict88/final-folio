@@ -526,7 +526,7 @@
             <div class="project-grid">
                 <?php foreach ($projects as $project):
                     $images = json_decode($project['image_album'], true);
-                    $thumbnail = !empty($images) ? $images[0] : 'https://via.placeholder.com/400x220.png?text=No+Image';
+                    $thumbnail = !empty($images) ? SITE_URL . '/' . $images[0] : 'https://via.placeholder.com/400x220.png?text=No+Image';
                 ?>
                 <div class="project-card">
                     <img src="<?php echo e($thumbnail); ?>" alt="<?php echo e($project['title']); ?>">
