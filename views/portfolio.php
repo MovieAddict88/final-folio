@@ -535,16 +535,18 @@
                     $thumbnail = !empty($images) ? SITE_URL . '/' . $images[0] : 'https://via.placeholder.com/400x220.png?text=No+Image';
                 ?>
                 <div class="project-card" id="project-<?php echo $project['id']; ?>">
-                    <a href="<?php echo e($thumbnail); ?>">
-                        <img src="<?php echo e($thumbnail); ?>" alt="<?php echo e($project['title']); ?>" style="cursor: pointer;">
-                    </a>
+                    <div class="project-gallery">
+                        <a href="<?php echo e($thumbnail); ?>">
+                            <img src="<?php echo e($thumbnail); ?>" alt="<?php echo e($project['title']); ?>" style="cursor: pointer;">
+                        </a>
 
-                    <div style="display:none;">
-                        <?php if (count($images) > 1): ?>
-                            <?php for ($i = 1; $i < count($images); $i++): ?>
-                                <a href="<?php echo SITE_URL . '/' . $images[$i]; ?>"></a>
-                            <?php endfor; ?>
-                        <?php endif; ?>
+                        <div style="display:none;">
+                            <?php if (count($images) > 1): ?>
+                                <?php for ($i = 1; $i < count($images); $i++): ?>
+                                    <a href="<?php echo SITE_URL . '/' . $images[$i]; ?>"></a>
+                                <?php endfor; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
 
                     <div class="project-card-content">
@@ -663,9 +665,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js" integrity="sha512-dGnPryMeOe8KFKLALHAiv7SNNJSCvm1O4KDo44bpTJYGf2eixGAapAIHUykyJdanqk1UabjECem8RxRa6I_GGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                lightGallery(card, {
+            const projectGalleries = document.querySelectorAll('.project-gallery');
+            projectGalleries.forEach(gallery => {
+                lightGallery(gallery, {
                     selector: 'a',
                     download: false,
                     counter: true,
